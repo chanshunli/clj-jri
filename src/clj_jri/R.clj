@@ -14,7 +14,7 @@
   (when (or (when (nil? (System/getenv "R_HOME"))
               (println "Environment variable R_HOME is not set.")
               true)
-            (when (nil? (System/getenv "LD_LIBRARY_PATH"))
+            (when (nil? (System/getenv "R_HOME"))
               (println "Environment variable LD_LIBRARY_PATH is not set.")
               true))
     (throw (Exception. (str "Check your environment variables."))))
