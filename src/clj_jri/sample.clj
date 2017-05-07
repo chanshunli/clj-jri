@@ -65,4 +65,15 @@
 (R/eval "fnTest") ;; => nil
 (R/eval "fnTest(1, 2)") ;;=> [3.0]
 
+;; 函数定义用了"\n",不是单行,执行报错
+(R/eval "fnTest2 <- function(a, b) {
+          a + b
+       }") ;;=> nil
+(R/eval "fnTest2") ;; => nil
+(R/eval "fnTest2(1, 2)") ;;=> nil
+
+;; 函数定义用了";",隔开了多行,ok了
+(R/eval "fnTest3 <- function(a, b) { c = a + b; c + 100 }")
+(R/eval "fnTest3") ;; => nil
+(R/eval "fnTest3(1, 2)")  ;;=> [103.0]
 
