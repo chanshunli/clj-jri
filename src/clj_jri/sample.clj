@@ -60,3 +60,9 @@
 (R/eval "a <- 1 \n a + 100") ;;=> [101.0], 以矩阵运算为核心,向量只是特殊的矩阵
 (R/eval "sqrt(36)") ;;=> [6.0]
 
+;; 函数的定义 
+(R/eval "fnTest <- function(a, b) { a + b }")
+(R/eval "fnTest") ;; => nil
+(R/eval "fnTest(1, 2)") ;;=> [3.0]
+
+
