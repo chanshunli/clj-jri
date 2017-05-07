@@ -7,25 +7,28 @@ A simple wrapper library for JRI, Java/R interface, mostly to draw charts on R.
 
 You may need to install R library "JGR/rJava" (http://rforge.net/JGR/) on R by "install.packages('rJava')" and have to set the following environment variables.
 
-(example)
+```clojure
+  :resource-paths ["lib/JRI.jar"
+                   "lib/JRIEngine.jar"
+                   "lib/REngine.jar"
+                   "lib/libjri.jnilib"]
+  :jvm-opts [~(str "-Djava.library.path=/usr/local/lib/R/3.4/site-library/rJava/jri/:" (System/getProperty "java.library.path"))]
+
 ```
-export R_HOME=/usr/lib/R/
-export LD_LIBRARY_PATH=./lib
+
+* Usage: 
+
+```clojure
+clj-jri.core=>  (ns test (:require [clj-jri.R :as R]))
+WARNING: eval already refers to: #'clojure.core/eval in namespace: clj-jri.R, being replaced by: #'clj-jri.R/eval
+nil
+
+test=> (R/eval "rnorm(5)")
+[-0.8927281724537759 -0.31414492274597694 0.16723344714036312 -0.7862470681485274 0.26787108270930693]
+test=>
 ```
 
 You also need to place REngine.jar, JRI.jar and libjri.so from the original project site onto LD_LIBRARY_PATH.
-
-To install the library locally, the following process is recommended.
-
-```
-lein clean
-lein deps
-lein compile
-lein jar
-lein uberjar
-lein localrepo install ./target/clj-jri-0.0.1-standalone.jar clj-jri 0.0.1-standalone
-```
-
 
 ## Examples and notes
 
