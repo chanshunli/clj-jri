@@ -13,3 +13,4 @@ pom.xml.asc
 lib/libjri.jnilib
 .RData
 lib/
+*.txt.gz

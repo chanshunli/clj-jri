@@ -11,5 +11,25 @@
 ;You may need to install R library "JGR/rJava" (https://rforge.net/JGR/linux.html)
 ;on R by "install.packages('rJava')"
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(def r-lib
+  ["library(tm)"
+   "library(wordcloud)"
+   "library(memoise)"])
+
+;; load R lib ==>
+(R/eval r-lib)
+
+(def get-term-matrix
+  "getTermMatrix <- memoise(function(book) { text <- readLines(sprintf(\"./%s.txt.gz\", book), encoding=\"UTF-8\"); myCorpus = Corpus(VectorSource(text));    myCorpus = tm_map(myCorpus, content_transformer(tolower));    myCorpus = tm_map(myCorpus, removePunctuation);    myCorpus = tm_map(myCorpus, removeNumbers);    myCorpus = tm_map(myCorpus, removeWords, c(stopwords(\"SMART\"), \"thy\", \"thou\", \"thee\", \"the\", \"and\", \"but\"));    myDTM = TermDocumentMatrix(myCorpus, control = list(minWordLength = 1));    m = as.matrix(myDTM);    sort(rowSums(m), decreasing = TRUE)  })"
+  )
+
+(R/eval get-term-matrix)
+
+;;(R/eval "getTermMatrix(\"merchant\")")
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
 (defn -main[& args]
   (use 'clj-jri.sample))
