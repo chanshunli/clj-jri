@@ -96,7 +96,7 @@
   )
 
 (R/eval get-term-matrix)
-
-(R/eval "getTermMatrix(\"merchant\")")
+;; R输出的矩阵,需要Clojure的特殊处理才可以,否则统统压扁成Clj的Vector了
+(R/eval "getTermMatrix(\"merchant\")") ;;=> [604.0 320.0 246.0 208.0 171.0 163.0 161.0 156.0 133.0 133.0 ... ]
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
