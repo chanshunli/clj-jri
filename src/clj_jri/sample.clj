@@ -44,6 +44,7 @@
 (println (R/eval "x"))
 
 (println "# chart test (check /tmp/LineChart.jpg)")
+;; 这里输出了R画的图, ok的 ` /tmp/LineChart.jpg `
 (println (R/eval [
             "data(cars)"
             "jpeg(file=\"/tmp/LineChart.jpg\",width=800,height=600)"
