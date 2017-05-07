@@ -80,4 +80,23 @@
 ;; R的读取文件是ok的
 (R/eval "readLines(\"merchant.txt.gz\", encoding=\"UTF-8\")") ;; OK
 
+;; 定义一个函数的例子: 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(def r-lib
+  ["library(tm)"
+   "library(wordcloud)"
+   "library(memoise)"])
+
+;; load r lib ==>
+(R/eval r-lib)
+
+;; `Replace string (default ^J → ; `=> 将回车替换为";"号
+(def get-term-matrix
+  "getTermMatrix <- memoise(function(book) { text <- readLines(sprintf(\"./%s.txt.gz\", book), encoding=\"UTF-8\"); myCorpus = Corpus(VectorSource(text));    myCorpus = tm_map(myCorpus, content_transformer(tolower));    myCorpus = tm_map(myCorpus, removePunctuation);    myCorpus = tm_map(myCorpus, removeNumbers);    myCorpus = tm_map(myCorpus, removeWords, c(stopwords(\"SMART\"), \"thy\", \"thou\", \"thee\", \"the\", \"and\", \"but\"));    myDTM = TermDocumentMatrix(myCorpus, control = list(minWordLength = 1));    m = as.matrix(myDTM);    sort(rowSums(m), decreasing = TRUE)  })"
+  )
+
+(R/eval get-term-matrix)
+
+(R/eval "getTermMatrix(\"merchant\")")
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
