@@ -1,4 +1,5 @@
-(ns clj-jri.core)
+(ns clj-jri.core
+  (:require [clj-jri.R :as R]))
 
 ;This is a simple Clojure wrapper for JRI, Java-to-R bridge.
 ;refer to https://github.com/s-u/rJava
