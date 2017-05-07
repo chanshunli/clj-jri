@@ -77,3 +77,7 @@
 (R/eval "fnTest3") ;; => nil
 (R/eval "fnTest3(1, 2)")  ;;=> [103.0]
 
+;; R的读取文件是ok的
+(R/eval "readLines(\"merchant.txt.gz\", encoding=\"UTF-8\")") ;; OK
+
+
