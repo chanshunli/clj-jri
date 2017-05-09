@@ -2,6 +2,50 @@
 
 A simple wrapper library for JRI, Java/R interface, mostly to draw charts on R.
 
+## Usage
+
+
+* libs path
+```bash
+➜  clj-jri git:(master) ✗ ls /usr/local/lib/R/3.4/site-library/rJava/jri/JRI.jar
+/usr/local/lib/R/3.4/site-library/rJava/jri/JRI.jar
+➜  clj-jri git:(master) ✗ ls /usr/local/lib/R/3.4/site-library/rJava/jri/JRIEngine.jar
+/usr/local/lib/R/3.4/site-library/rJava/jri/JRIEngine.jar
+➜  clj-jri git:(master) ✗ ls /usr/local/lib/R/3.4/site-library/rJava/jri/REngine.jar
+/usr/local/lib/R/3.4/site-library/rJava/jri/REngine.jar
+➜  clj-jri git:(master) ✗ ls /usr/local/lib/R/3.4/site-library/rJava/jri/libjri.jnilib
+/usr/local/lib/R/3.4/site-library/rJava/jri/libjri.jnilib
+➜  clj-jri git:(master)
+```
+
+* project.clj : jvm-opts & resource-paths 
+```clojure
+  :dependencies [ ...
+  [clj-jri "0.1.1-SNAPSHOT"]
+  ]
+
+  :jvm-opts [ ...
+             ~(str "-Djava.library.path=/usr/local/lib/R/3.4/site-library/rJava/jri/:" (System/getProperty "java.library.path"))]
+
+  :resource-paths [...
+                   "/usr/local/lib/R/3.4/site-library/rJava/jri/JRI.jar"
+                   "/usr/local/lib/R/3.4/site-library/rJava/jri/JRIEngine.jar"
+                   "/usr/local/lib/R/3.4/site-library/rJava/jri/REngine.jar"
+                   "/usr/local/lib/R/3.4/site-library/rJava/jri/libjri.jnilib"]
+                   
+```
+* lein 
+
+```bash
+lein clean
+lein repl
+```
+
+* require   
+```           
+[clj-jri.R :as R]
+
+```
 
 ## Preparation
 
