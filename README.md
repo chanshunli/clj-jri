@@ -2,7 +2,7 @@
 
 A simple wrapper library for JRI, Java/R interface, mostly to draw charts on R.
 
-## Usage
+## Usage (Mac: libjri.jnilib, Ubuntu or Linux: libjri.so)
 
 
 * libs path
