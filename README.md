@@ -5,7 +5,7 @@ A simple wrapper library for JRI, Java/R interface, mostly to draw charts on R.
 ## Usage (Mac: libjri.jnilib, Ubuntu or Linux: libjri.so)
 
 
-* libs path
+* check libs path
 ```bash
 ➜  clj-jri git:(master) ✗ ls /usr/local/lib/R/3.4/site-library/rJava/jri/JRI.jar
 /usr/local/lib/R/3.4/site-library/rJava/jri/JRI.jar
@@ -17,7 +17,10 @@ A simple wrapper library for JRI, Java/R interface, mostly to draw charts on R.
 /usr/local/lib/R/3.4/site-library/rJava/jri/libjri.jnilib
 ➜  clj-jri git:(master)
 ```
-
+* ENV setup
+```bash
+export R_HOME=/usr/local/Cellar/r/3.4.0_1/R.framework/Resources
+```
 * project.clj : jvm-opts & resource-paths 
 ```clojure
   :dependencies [ ...
