@@ -4,6 +4,10 @@ A simple wrapper library for JRI, Java/R interface, mostly to draw charts on R.
 
 ## Usage (Mac: libjri.jnilib, Ubuntu or Linux: libjri.so)
 
+* install jri
+```r
+install.packages("rJava")
+```
 
 * check libs path
 ```bash
